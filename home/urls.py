@@ -4,9 +4,7 @@ from .views import (
     cart,
     itemproduct,
     addcart,
-
-    registerpost,
-
+    loginpage,
 )
 app_name = 'home'
 urlpatterns = [
@@ -14,6 +12,5 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path('product/<slug>/', itemproduct.as_view(), name='product'),
     path('addcart/<slug>/', addcart, name='addcart'),
-    #path('register/', registershop, name='register'),
-    path('registerform/', registerpost, name='registerpost'),
+    path('login/', loginpage, name='loginpage'),
 ]

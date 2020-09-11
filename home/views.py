@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.views.generic import DetailView
 from .models import item, orderitem, order
 from django.utils import timezone
-from .form import createuserform
+
 from django.contrib.auth import login
 
 # Create your views here.
@@ -44,23 +44,13 @@ def addcart(request, slug):
         Order.Items.add(Order_item)
     return redirect("home:product", slug=slug)
 
+def loginpage(request):
+    return render(request, 'onlineshoop/login.html')
 
 
 
-def registerpost(request):
 
-    if request.method == 'POST':
-        form = createuserform(request.POST)
-        if form.is_valid():
-            form.save()
 
-            return HttpResponse('luu ok')
-        else:
-            return HttpResponse('khong co du lieu')
-    else:
-        form = createuserform()
-
-    return render(request, 'onlineshoop/register.html', {'form': form})
 
 
 

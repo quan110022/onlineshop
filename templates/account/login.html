@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  {% load static %}
+  {% load i18n %}
+  {% load account socialaccount %}
+  {% load crispy_forms_tags %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/themify-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/style.css' %}" type="text/css">
+</head>
+<body>
+    {% include 'onlineshoop/header.html'%}
+    <div class="container">
+      <section class="mb-4">
+        <div class="row wow fadeIn">
+          <div class='col-6 offset-3'>
+          <h1>{% trans "Sign In" %}</h1>
+
+          {% get_providers as socialaccount_providers %}
+
+          {% if socialaccount_providers %}
+          <p>{% blocktrans with site.name as site_name %}Please sign in with one
+          of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+          for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+          <div class="socialaccount_ballot">
+
+            <ul class="socialaccount_providers">
+
+            </ul>
+
+            <div class="login-or">{% trans 'or' %}</div>
+
+          </div>
+
+
+
+          {% else %}
+          <p>{% blocktrans %}If you have not created an account yet, then please
+          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+          {% endif %}
+
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+          </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+    {% include 'onlineshoop/footer.html' %}
+
+    <script src="{% static 'onlineshoop/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/jquery.zoom.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/jquery.dd.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'onlineshoop/js/main.js' %}"></script>
+
+</body>
+</html>
