@@ -64,7 +64,7 @@ ROOT_URLCONF = 'onlShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth', 'account')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -145,4 +145,6 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

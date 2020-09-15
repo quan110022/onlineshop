@@ -4,7 +4,6 @@
 <head>
   {% load static %}
   {% load i18n %}
-  {% load account socialaccount %}
   {% load crispy_forms_tags %}
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -22,47 +21,21 @@
     <link rel="stylesheet" href="{% static 'onlineshoop/css/style.css' %}" type="text/css">
 </head>
 <body>
-
-    {% include 'onlineshoop/header.html'%}
-
-
+{% include 'onlineshoop/header.html'%}
      <div class="container">
       <section class="mb-4">
         <div class="row wow fadeIn">
           <div class='col-6 offset-3'>
-          <h1>{% trans "Sign In" %}</h1>
-
-          {% get_providers as socialaccount_providers %}
-
-          {% if socialaccount_providers %}
-
-
-          <div class="socialaccount_ballot">
-
-            <ul class="socialaccount_providers">
-
-            </ul>
-
-            <div class="login-or">{% trans 'or' %}</div>
-
-          </div>
-
-
-
-          {% else %}
-          <p>{% blocktrans %}If you have not created an account yet, then please
-          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-          {% endif %}
-
-          <form class="login" method="POST" action="{% url 'account_login' %}">
-            {% csrf_token %}
-            {{ form|crispy }}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
-            <a class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-          </form>
+            <h1>{% trans "Sign Up" %}</h1>
+            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+              {% csrf_token %}
+              {{ form|crispy }}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <button class='btn btn-primary' type="submit">{% trans "Sign Up" %} </button>
+            </form>
           </div>
         </div>
       </section>
@@ -71,7 +44,7 @@
 
 
 
-    {% include 'onlineshoop/footer.html' %}
+{% include 'onlineshoop/footer.html' %}
 
     <script src="{% static 'onlineshoop/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'onlineshoop/js/bootstrap.min.js' %}"></script>

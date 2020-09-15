@@ -1,6 +1,14 @@
 
 {% load static %}
 <header class="header-section">
+    {% if user.is_authenticated %}
+        <div class="alert alert-danger">
+            hello {{user.username}}
+        </div>
+    {% endif%}
+
+
+
         <div class="header-top">
             <div class="container">
                 <div class="ht-left">
@@ -24,7 +32,7 @@
                         </select>
                     </div>
                     <div class="top-social">
-                        <a href="{% url 'home:loginpage'%}"><i class="ti-facebook"></i></a>
+                        <a href=""><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
                         <a href="#"><i class="ti-linkedin"></i></a>
                         <a href="#"><i class="ti-pinterest"></i></a>
@@ -144,17 +152,20 @@
                         <li><a href="./contact.html">Contact</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
+                                {% csrf_token %}
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                                 <li><a href="{% url 'home:cart'%}">Shopping Cart</a></li>
                                 <li><a href="./check-out.html">Checkout</a></li>
                                 <li><a href="./faq.html">Faq</a></li>
-                                <li><a href="./register.html">Register</a></li>
-                                <li><a href="../account/login.html">Login</a></li>
+                                <li><a href="{% url 'account_signup'%}">Register</a></li>
+                                <li><a href="{% url 'account_login'%}">Login</a></li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap"></div>
+
             </div>
         </div>
+
     </header>
