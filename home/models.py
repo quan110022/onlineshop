@@ -38,12 +38,18 @@ class item(models.Model):
 
 
 class orderitem(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    ordered = models.BooleanField(default=False)
     Item = models.ForeignKey(item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
 
     def __str__(self):
         return f"{self.quantity} of {self.Item.title}"
+    def total_price(self):
+        return self.quantity * self.Item.pricesale
+    def total_quantity(self):
+        return self.quantity
 
 
 
@@ -57,5 +63,12 @@ class order(models.Model):
 
     def __str__(self):
         return str(self.user.username)
+
+    def final_total_price(self):
+        total = 0
+        for order_item in self.Items.all():
+            total += order_item.total_price()
+        return total
+
 
 

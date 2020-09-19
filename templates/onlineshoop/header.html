@@ -1,7 +1,8 @@
 
 {% load static %}
+{%load cart_count%}
 <header class="header-section">
-    {% if user.is_authenticated %}
+    {% if request.user.is_authenticated %}
         <div class="alert alert-danger">
             hello {{user.username}}
         </div>
@@ -61,16 +62,19 @@
                     </div>
                     <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
+                            {% if request.user.is_authenticated %}
                             <li class="heart-icon">
+
                                 <a href="#">
                                     <i class="icon_heart_alt"></i>
-                                    <span>1</span>
+                                    <span>{{ request.user|cart_count }}</span>
                                 </a>
+
                             </li>
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="{% url 'home:cart'%}">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <span>{{ Items.quantity }}</span>
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
@@ -113,6 +117,7 @@
                                     </div>
                                 </div>
                             </li>
+                            {% endif %}
                             <li class="cart-price">$150.00</li>
                         </ul>
                     </div>
