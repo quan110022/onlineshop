@@ -87,13 +87,13 @@ def remove_item_from_cart(request, slug):
                 order_item.save()
             else:
                 Order.Items.remove(order_item)
-            messages.info(request, "This item quantity was updated.")
+            messages.info(request, "update quantity item.")
             return redirect("home:cart")
         else:
-            messages.info(request, "This item was not in your cart")
+            messages.info(request, "not item")
             return redirect("home:product", slug=slug)
     else:
-        messages.info(request, "You do not have an active order")
+        messages.info(request, "not order")
         return redirect("home:product", slug=slug)
 
 
