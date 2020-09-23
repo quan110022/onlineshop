@@ -23,14 +23,22 @@
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="{% url 'account_login'%}" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                            <a href="{% url 'account_logout'%}" class="login-panel"><i class="fa fa-user" ></i>Logout</a>
+                            <a href="{% url 'account_login'%}" class="login-panel"><i class="fa fa-user" ></i>Login</a>
+
+
+
+
+
                     <div class="lan-selector">
-                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                        <select class="language_drop" name="countries" id="countries" style="width:150px;">
                             <option value='yt' data-image="{% static 'onlineshoop/img/flag-1.jpg' %}" data-imagecss="flag yt"
                                 data-title="English">English</option>
                             <option value='yu' data-image="{% static 'onlineshoop/img/flag-2.jpg' %}" data-imagecss="flag yu"
                                 data-title="Bangladesh">German </option>
                         </select>
+
+
                     </div>
                     <div class="top-social">
                         <a href=""><i class="ti-facebook"></i></a>
@@ -160,7 +168,7 @@
                                 {% csrf_token %}
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                                 <li><a href="{% url 'home:cart'%}">Shopping Cart</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
+                                <li><a href="{% url 'home:check-out'%}">Checkout</a></li>
                                 <li><a href="./faq.html">Faq</a></li>
                                 <li><a href="{% url 'account_signup'%}">Register</a></li>
                                 <li><a href="{% url 'account_login'%}">Login</a></li>

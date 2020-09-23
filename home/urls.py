@@ -5,7 +5,8 @@ from .views import (
     itemproduct,
     addcart,
     loginpage,
-    remove_item_from_cart
+    remove_item_from_cart,
+    CheckoutView,
 )
 app_name = 'home'
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path('addcart/<slug>/', addcart, name='addcart'),
     path('login/', loginpage, name='loginpage'),
     path('remove_cart/<slug>/', remove_item_from_cart, name='remove_cart'),
+    path('check-out/', CheckoutView.as_view(), name='check-out'),
 ]
