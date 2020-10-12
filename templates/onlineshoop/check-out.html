@@ -53,60 +53,60 @@
     <!-- Breadcrumb Section Begin -->
 
     <!-- Shopping Cart Section Begin -->
-    <section class="checkout-section spad">
+     <section class="checkout-section spad">
         <div class="container">
-
-            <form method="post" class="checkout-form">
+            <form action="." class="checkout-form" method="post">
                 {% csrf_token %}
-
                 <div class="row">
-                    <div class="col">
-                        <div class="col-lg-6">
+                    <div class="col-lg-6">
                         <div class="checkout-content">
-                            <a href="{% url 'account_login'%}" class="content-btn">Click Here To Login</a>
+                            <a href="#" class="content-btn">Click Here To Login</a>
                         </div>
-                            <h4>Biiling Details</h4>
-                    </div>
+                        <h4>Biiling Details</h4>
+                        <div class="row">
 
-                        <div class="col-lg-12">
-                            <label >Address<span>*</span></label>
-                            {{ form.address}}
-                        </div>
-                        <div class="col-lg-12">
-                            <label >Country<span>*</span></label>
-                            {{form.country}}
-                        </div>
-                        <div class="col-lg-12">
-                            <label >Postcode / ZIP (optional)</label>
-                            {{form.zip}}
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="custom-control custom-radio">
-                                <input {% if form.save %}checked{% endif %} type="checkbox" class="custom-control-input" name="Save-info" id="save">
-                                <label class="custom-control-label" for="save"> Luu Thong Tin !</label>
+                            <div class="col-lg-12">
+                                <label >Address</label>
+                                {{ form.address}}
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            {% for value,name in form.fields.payment.choices %}
-                            <div class="custom-control custom-radio">
-                                <input id="{{name}}" name="payment" type="radio" class="custom-control-input" value="{{value}}" check required>
-                                <label for="{{name}}" class="custom-control-label">{{name}}</label>
+                            <div class="col-lg-12">
+                                <label >Country<span>*</span></label>
+                                {{form.country}}
                             </div>
-                            {%endfor%}
-                        </div>
-                        <div class="col-lg-12">
+
+                            <div class="col-lg-12">
+                                <label >Postcode / ZIP (optional)</label>
+                                {{form.zip}}
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input {% if form.save_info %}checked{% endif %} id="save" name="save-info" class="custom-control-input" type="checkbox">
+                                    <label class="custom-control-label" for="save">Save info</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                {% for value,name in form.fields.payment.choices %}
+                                    <div class="custom-control custom-radio">
+                                        <input id="{{ name }}" name="payment" value="{{value}}" type="radio" class="custom-control-input" checked required>
+                                        <label for="{{ name }}" class="custom-control-label">{{name}}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+
+                            <div class="col-lg-12">
                                 <div class="create-item">
                                     <label for="acc-create">
-                                        <a href="{% url 'account_signup'%}"> Create account ?</a>
+                                        Create an account?
                                         <input type="checkbox" id="acc-create">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                    <button type="submit" class="site-btn place-btn" >Payment</button>
+                            </div>
                         </div>
-                        <div class="order-btn">
-                            <button type="submit" class="site-btn place-btn">Enter</button>
-                        </div>
-                    </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="checkout-content">
@@ -120,19 +120,8 @@
                                     <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
                                     <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
                                     <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
-                                    <li class="fw-normal">Subtotal <span>$240.00</span></li>
                                     <li class="total-price">Total <span>$240.00</span></li>
                                 </ul>
-                                <div class="payment-check">
-                                    <div class="pc-item">
-                                        <label for="pc-check">
-                                            Cheque Payment
-                                            <input type="checkbox" id="pc-check">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>

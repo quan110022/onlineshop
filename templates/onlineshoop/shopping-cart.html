@@ -70,13 +70,10 @@
                             </thead>
                             <tbody>
                             {% for order_item in object.Items.all %}
-
                                 <tr>
                                     <td class="cart-pic first-row"><img src="{{order_item.Item.img.url}}" alt=""></td>
                                     <td class="cart-title first-row">
-
                                         <h5>{{order_item.Item.title}}</h5>
-
                                     </td>
                                     <td class="p-price first-row">${{order_item.Item.pricesale}}</td>
                                         <td class="qua-col first-row">
@@ -88,7 +85,7 @@
                                     <td class="total-price first-row">${{order_item.total_price}}</td>
                                     <td class="close-td first-row"><i class="ti-close"></i></td>
                                 </tr>
-                             {% endfor %}
+                            {% endfor %}
 
                             </tbody>
                         </table>
@@ -107,7 +104,7 @@
 
                                     <li class="cart-total">Total <span>${{ object.final_total_price}}</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <a href="{% url 'home:check-out'%}" class="proceed-btn">PROCEED TO CHECK OUT</a>
                             </div>
                         </div>
                     </div>

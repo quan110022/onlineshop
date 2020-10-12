@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/themify-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'onlineshoop/css/style.css' %}" type="text/css">
+</head>
+<body>
+<!-- Header Section Begin -->
+{% include 'onlineshoop/header.html'%}
+<!-- Header End -->
+<div class="container">
+    <div class="alert alert-dark" role="alert">
+        <h3> Men 's Clothing</h3>
+    </div>
+    <div class="row">
+        {% for Item in Items%}
+        <div class="col-sm">
+            <div class="product-item">
+                <div class="pi-pic">
+                    <img src={{Item.img.url}} alt="">
+                    <ul>
+                        <li class="w-icon active"><a href="{{ Item.get_absolute_url }}"><i class="icon_bag_alt"></i></a></li>
+                    </ul>
+                </div>
+                <div class="pi-text">
+                    <div class="catagory-name">{{Item.category}}</div>
+                    <a>
+                        <h5>{{Item.title}}</h5>
+                    </a>
+                    <div class="product-price">
+                        ${{Item.price}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+    </div>
+
+
+<!-- Footer Section Begin -->
+{% include 'onlineshoop/footer.html' %}
+<!-- Footer Section End -->
+
+
+<script src="{% static 'onlineshoop/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/jquery.dd.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'onlineshoop/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'onlineshoop/js/main.js' %}"></script>
+
+</body>
+</html>

@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'home',
     'crispy_forms',
     'django_countries',
+    'rest_framework',
+    'stripe',
 
 ]
 
@@ -149,3 +151,14 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51HXOzlHaJ3uzWdkP9iNVOYNOMM7TDjSrOMVvPwKgeH22cP076SlIUJTT495JTbeSd4MmV1u8aA27DccfxoMys6jL00NFBGIgtJ'
+
+STRIPE_PRIVATE_KEY = 'sk_test_51HXOzlHaJ3uzWdkPdar1NJXgs5VynxTXuEOB5ZkbsaVk7ckXnFu3tBisDgKV9h36WKYRo4YATls0AOaridnGJCNk00ozYgZpr9'
+
+
+
+
+
+
+

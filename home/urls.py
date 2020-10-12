@@ -7,6 +7,12 @@ from .views import (
     loginpage,
     remove_item_from_cart,
     CheckoutView,
+    PaymentView,
+    MenClothing,
+    WomenView,
+
+
+
 )
 app_name = 'home'
 urlpatterns = [
@@ -17,4 +23,7 @@ urlpatterns = [
     path('login/', loginpage, name='loginpage'),
     path('remove_cart/<slug>/', remove_item_from_cart, name='remove_cart'),
     path('check-out/', CheckoutView.as_view(), name='check-out'),
+    path('payment/<payment>/', PaymentView.as_view(), name="payment"),
+    path('men-clothing/', MenClothing, name='men-clo'),
+    path('women-clothing/', WomenView, name='women-clo'),
 ]
