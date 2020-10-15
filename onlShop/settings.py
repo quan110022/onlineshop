@@ -38,7 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+
     'home',
+    'crispy_forms',
+    'django_countries',
+    'rest_framework',
+    'stripe',
+
 ]
 
 MIDDLEWARE = [
@@ -56,7 +67,7 @@ ROOT_URLCONF = 'onlShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth', 'account')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,3 +138,27 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 STATIC_ROOT = "/static/"
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51HXOzlHaJ3uzWdkP9iNVOYNOMM7TDjSrOMVvPwKgeH22cP076SlIUJTT495JTbeSd4MmV1u8aA27DccfxoMys6jL00NFBGIgtJ'
+
+STRIPE_PRIVATE_KEY = 'sk_test_51HXOzlHaJ3uzWdkPdar1NJXgs5VynxTXuEOB5ZkbsaVk7ckXnFu3tBisDgKV9h36WKYRo4YATls0AOaridnGJCNk00ozYgZpr9'
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
+
+
+
