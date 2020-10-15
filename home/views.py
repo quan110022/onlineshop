@@ -54,9 +54,6 @@ def addcart(request, slug):
         Order.Items.add(Order_item)
     return redirect("home:cart")
 
-def loginpage(request):
-    return render(request, 'onlineshoop/login.html')
-
 
 class shoppingcart(LoginRequiredMixin, View):
 
